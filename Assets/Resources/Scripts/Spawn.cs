@@ -35,3 +35,4 @@ public class Spawn : MonoBehaviour
         
     }
 }
+// слава богу коментарі норм кладуться
