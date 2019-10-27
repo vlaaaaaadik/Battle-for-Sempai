@@ -8,6 +8,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public int health = 3;
     public float time = 5;
+    public HeroBehaviour hero { get; private set; }
     private void OnMouseDown()
     {
         health--;
@@ -23,14 +24,14 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Start()
     {
+        hero = GameObject.Find("Hero").GetComponent<HeroBehaviour>();
         time = Time.time;
     }
     private void Update()
     {
-        var heroHealth = GameObject.FindGameObjectsWithTag("health");
         if (Time.time - time >= 5)
         {
-            if (heroHealth.Length > 0) Destroy(heroHealth[0]);
+            if (hero.Health > 0) hero.takeDamage();
             time = Time.time;
         }
     }
